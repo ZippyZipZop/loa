@@ -3,11 +3,11 @@
     
     $account   = get_user($_SESSION['email'], 'account');
     $character = get_user($account['id'], 'character');
-
+    
     $user_mailbox = new MailBox($account['id']);
     $user_mailbox->set_focused_folder(MailFolderType::INBOX);
     $user_mailbox->populate_focused_folder();
-    $inbox_count = $user_mailbox->get_focused_folder_count();
+    $inbox_count = $user_mailbox->focusedFolder->get_message_count();
 ?>
 
 <div class="container text-white">
@@ -68,6 +68,8 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="list-outbox" role="tabpanel" aria-labelledby="list-mail-outbox">
+                    
+                </div>
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                             <div class="d-flex w-100 justify-content-between">

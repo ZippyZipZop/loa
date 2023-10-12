@@ -4,21 +4,21 @@
 
 ?>
 
-<div class="container ">
+<div class="container text-white">
     <div class="row pt-5">
         <div class="col">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">
+                <a class="list-group-item list-group-item-action active bg-dark text-white" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">
                     Account
                 </a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
+                <a class="list-group-item list-group-item-action bg-dark text-white" id="lislt-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
                     Character
                 </a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">
+                <a class="list-group-item list-group-item-action bg-dark text-white" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">
                     Messages
                 </a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">
-                    SPOTIFY PREEMIIUUUUM
+                <a class="list-group-item list-group-item-action bg-dark text-white" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">
+                    hi
                 </a>
             </div>
         </div>
@@ -93,11 +93,11 @@
                 </div>
 
                 <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                o look some message things
+                    o look some message things
                 </div>
 
                 <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                get out
+                    get out
                 </div>
             </div>
         </div>
