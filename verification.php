@@ -21,6 +21,15 @@
             $db->query('UPDATE ' . $_ENV['SQL_ACCTS_TBL'] . ' ' .
                          'SET `privileges` = "' . UserPrivileges::VERIFIED->name . '" ' .
                          'WHERE `id` = ' . $player['id']
-                      );
+            );
+            
+            $log->info("User verification successful",
+                        [
+                            'User'    => $player['email'],
+                            'Request' => print_r($_REQUEST, 1)
+                        ]
+            );
+        } else {
+            
         }
     }
