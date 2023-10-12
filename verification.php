@@ -12,10 +12,15 @@
         
         $results = get_results();
         
-        /* Player found with matching verification code */
+        /* 
+            Player found with matching verification code,
+            set privileges to a registered user
+        */
         if ($results->num_rows) {
             $player = $results->fetch_assoc();
-            $sql_query = '';
-            
+            $db->query('UPDATE ' . $_ENV['SQL_ACCTS_TBL'] . ' ' .
+                         'SET `privileges` = "' . UserPrivileges::VERIFIED->name . '" ' .
+                         'WHERE `id` = ' . $player['id']
+                      );
         }
     }
