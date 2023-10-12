@@ -11,7 +11,7 @@
 
     if ($db->connect_errno) {
         $log->critical('Unable to make a connection to the SQL database D:');
-        die();
+        die(Error::SQLDB_NOCONNECTIONT);
     }
     
     $log->info("Connection to $sql_host:$sql_port successful", ['Username' => $sql_user]);
@@ -52,22 +52,32 @@
                     rtrim(',', $query);
                 }
                 break;
-            case default:
-                return -2;
+            default:
+                return Error::FUNCT_DOSQL_INVALIDACTION;
                 
         }
         
         $bind_str = str_repeat('s', $target_count);
         $prepped  = $db->prepare($query);
         $prepped->bind_param($bind_str, ...$values);
-        $prepped->execute();
-        $results  = $prepped->get_results();
+        
+        if ($prepped->execute()) {
+            $results = $prepped->get_results();
+        } else {
+            $log->error("Couldn't execute generated query in sql wrapper",
+                    [ 
+                        'Query' => $query,
+                        'Error' => $prepped->error,
+                    ]
+            )
+            return Error::SQLDB_PREPPED_EXECUTE;
+        }
         
         
         if ($results->num_rows) {
             return $results;
         }
         
-        return -1;
+        return 0;
     }
 ?>
