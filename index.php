@@ -37,13 +37,11 @@
 
             $character = get_user($account['email'], 'character');
 
-            $db->query("UPDATE tbl_accounts SET session_id = '" . session_id() . "' WHERE email = '". $account['email']. "'");
-            //$db->query("UPDATE tbl_accounts SET session_id = '{session_id()}' WHERE email = '{$account["email"]}'");
-
             $_SESSION['logged-in'] = 1;
             $_SESSION['email'] = $account['email'];
             $_SESSION['account_id'] = $character['account_id'];
             $_SESSION['name'] = $character['name'];
+            
             header('Location: /game');
             exit();
         } else {
@@ -74,6 +72,7 @@
         $prepped = $db->prepare('SELECT * FROM ' . $_ENV['SQL_ACCT_TBL'] . ' WHERE email = ?');
         $prepped->bind_param('s', $email);
         $prepped->execute();
+        
         $result  = $prepped->get_result();
         $account = $result->fetch_assoc();
 
@@ -102,8 +101,7 @@
                                         [ 'Avatar' => $avatar, 'Avatar_now' => $avatar_now ] );
                         $avatar = $avatar_now;
                     }
-
-
+                    
                     $valid_race = 0;
                     foreach(Races::cases() as $enum_race) {
                         if ($race === $enum_race->name) {
@@ -174,4 +172,3 @@
         </div>
     </body>
 </html>
-                

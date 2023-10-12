@@ -1,6 +1,5 @@
 <?php
     declare(strict_types = 1);
-    
     session_start();
     require __DIR__ . '/vendor/autoload.php';
 
@@ -68,7 +67,7 @@
                         </a>
 
                         <hr style="width: 35%; opacity: .25; align-self: center;">
-
+                        
                         <ul class="nav nav-pills flex-column mb-0 align-items-center align-items-sm-start mb-sm-auto" id="menu">
                             <li>
                                 <a href="#sub-menu-character" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -189,25 +188,19 @@
                                 </ul>
                             </li>
                         </ul>
-                    </div>
-
-                    <hr style="width: 35%; opacity: .25; align-self: center;">
-
-                    <div class="dropdown pb-4 ms-4 fixed-bottom">
+    
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+
                             <img src="img/avatars/<?php echo $character['avatar']; ?>" alt="avatar" width="50" height="50" class="rounded-circle" />
                             <span class="d-none d-sm-inline mx-1 ms-5 fs-5">
                                 Account
                             </span>
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu text-small shadow">
                             <li><a class="dropdown-item" href="?page=profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="?page=friends">Friends</a></li>
                             <li><a class="dropdown-item" href="?page=mail">Mail
                                     <span class="badge bg-danger rounded-pill"> 5</span>
-                            </a></li>
-                            <li><a class="dropdown-item" href="?page=friends">Friends
-                                    <span class="badge bg-danger rounded-pill"> 3</span>
                             </a></li>
                             <li><a class="dropdown-item" href="?page=settings">Settings</a></li>
                             <li><hr class="dropdown-divider"></li>

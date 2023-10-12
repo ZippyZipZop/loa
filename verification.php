@@ -1,1 +1,21 @@
-hi 
+<?php
+    global $db;
+    if (isset($_REQUEST['code']) && isset($_REQUEST['email'])) {
+        $verification_code = $_REQUEST['code'];
+        $email             = $_REQUEST['email'];
+        
+        $sql_query = 'SELECT * FROM ' . $_ENV['SQL_ACCT_TBL'] . ' WHERE `verification_code` = ? AND `email` = ?';
+        
+        $prepped = $db->prepare($sql_query);
+        $prepped->bind_param('ss', $verification_code, $email);
+        $prepped->execute();
+        
+        $results = get_results();
+        
+        /* Player found with matching verification code */
+        if ($results->num_rows) {
+            $player = $results->fetch_assoc();
+            $sql_query = '';
+            
+        }
+    }
