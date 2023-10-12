@@ -1,7 +1,7 @@
 <?php
 
     define('MAX_ASSIGNABLE_AP', 40);
-    define('ENERGY_PER_TICK', 3);
+    define('ENERGY_PER_TICK',    3);
     
     enum Races {
         public static function random(): self {
@@ -85,10 +85,10 @@
         case NONE;
     };
     
-    enum Error: int {
-        case ERR_INVALID_SQLWRAPPER_ACTION = -1000;
+    enum Error {
+        case FUNCT_DOSQL_INVALIDACTION = -1000;
         
-        case ERR_SQLDB_NOCONNECTION        = -2000;
-        case ERR_SQLDB_PREPPED_EXECUTE     = -2001;
+        case SQLDB_NOCONNECTION        = -2000;
+        case SQLDB_PREPPED_EXECUTE     = -2001;
     };
 ?>
