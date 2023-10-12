@@ -190,11 +190,8 @@
                         </ul>
     
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-
                             <img src="img/avatars/<?php echo $character['avatar']; ?>" alt="avatar" width="50" height="50" class="rounded-circle" />
-                            <span class="d-none d-sm-inline mx-1 ms-5 fs-5">
-                                Account
-                            </span>
+                            <span class="d-none d-sm-inline mx-1 ms-5 fs-5">Account</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu text-small shadow">
                             <li><a class="dropdown-item" href="?page=profile">Profile</a></li>
@@ -228,7 +225,9 @@
                     ?>
                 </div>
             </div>
+            
             <script type="text/javascript" src="js/footer.js"></script>
+            
             <div aria-live="polite" aria-atomic="true" class="position-relative">
                 <div class="toast-container position-fixed bottom-0 end-0 p-3" id='toast-container' name='toast-container'>
             </div>
