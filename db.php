@@ -26,6 +26,7 @@
                 $query = "INSERT INTO $table ($targets) VALUES(";
                 $query .= str_repeat('?,', $target_count);
                 $query = preg_replace('/,$/', ')', $query);
+                
                 break;
             case 'UPDATE':
                 $query = "UPDATE $table SET ";
@@ -38,6 +39,7 @@
                 if ($conditions) {
                     $query .= " WHERE $conditions";
                 }
+                
                 break;
             case 'SELECT':
                 $query = 'SELECT ';
@@ -51,6 +53,7 @@
                     }
                     rtrim(',', $query);
                 }
+                
                 break;
             default:
                 return Error::FUNCT_DOSQL_INVALIDACTION;
@@ -69,7 +72,8 @@
                         'Query' => $query,
                         'Error' => $prepped->error,
                     ]
-            )
+            );
+            
             return Error::SQLDB_PREPPED_EXECUTE;
         }
         
