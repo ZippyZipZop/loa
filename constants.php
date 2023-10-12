@@ -84,4 +84,11 @@
         case REQUEST;
         case NONE;
     };
+    
+    enum Error: int {
+        case ERR_INVALID_SQLWRAPPER_ACTION = -1000;
+        
+        case ERR_SQLDB_NOCONNECTION        = -2000;
+        case ERR_SQLDB_PREPPED_EXECUTE     = -2001;
+    };
 ?>
