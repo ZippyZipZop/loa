@@ -108,7 +108,10 @@
             $prepped->execute();
             
             $log->info('Friend request accepted', 
-                [ 'email_1' => $account['email'], 'email_2' => $email ]
+                [
+                    'email_1' => $account['email'], 
+                    'email_2' => $email
+                ]
             );
         }
     }
