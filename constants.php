@@ -115,9 +115,14 @@
     enum ItemRarity {
        public static function getItemRarity($roll) {
            foreach (self::cases() as $rarity) {
-               if ($roll <=)
+               $log->info("checking $rarity rarity against $roll");
+               if ($roll >= $rarity) {
+                   return $rarity;
+  
+               }
            }
        }
+       
        case WORTHLESS = 50.0;  /* 50.00% chance */
        case TARNISHED = 30.0;  /* 20.00% chance */
        case COMMON    = 20.0;  /* 10.00% chance */
