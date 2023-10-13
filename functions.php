@@ -39,3 +39,7 @@
                         " WHERE `name` = '$name'";
         $db->query($sql_query);
     }
+    
+    function random_float ($min,$max) {
+       return ($min + lcg_value() * (abs($max - $min)));
+    }
