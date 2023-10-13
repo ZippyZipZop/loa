@@ -108,13 +108,26 @@
         case ENRAGED;     /* 4x STR, -5% HP */
         case EXPERIENCED; /* 3x EXP, +2% HP+DEF */
         case PACKRAT;     /* Item rarity chances increased/1.5x, 3x gold */
-        case DEFECTING;
-        case LEADER;
+        case DEFECTING;   /* Chance to spare life/let join your army */
+        case LEADER;      /* 5-10x all stats */
     }
     
     enum ItemRarity {
-       case WORTHLESS = 70.0;
-       /* ... */
-       case GODLY     = 0.005;
+       public static function getItemRarity($roll) {
+           foreach (self::cases() as $rarity) {
+               if ($roll <=)
+           }
+       }
+       case WORTHLESS = 50.0;  /* 50.00% chance */
+       case TARNISHED = 30.0;  /* 20.00% chance */
+       case COMMON    = 20.0;  /* 10.00% chance */
+       case ENCHANTED = 12.0;  /*  8.00% chance */
+       case MAGICAL   =  8.0;  /*  4.00% chance */
+       case LEGENDARY =  5.0;  /*  3.00% chance */
+       case EPIC      = 2.50;  /*  2.50% chance */
+       case MYSTIC    = 1.50;  /*  1.00% chance */
+       case HEROIC    = 0.75;  /*  0.75% chance */
+       case INFAMOUS  = 0.24;  /*  0.51% chance */
+       case GODLY     = 0.01;  /*  0.23% chance */
     }
 ?>
