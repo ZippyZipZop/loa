@@ -69,20 +69,27 @@
         global $db, $account;
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         
-        /* ours */
-        $sql_query = "SELECT * FROM tbl_friends WHERE email_1 = '" . $account['email'] . "' AND email_2 = '$email'";
-        $count_one = $db->query($sql_query)->num_rows;
-
-        /* theirs */
-        $sql_query = "SELECT * FROM tbl_friends WHERE email_2 = '". $account['email']. "' AND email_1 = '$email'";
-        $count_two = $db->query($sql_query)->num_rows;
+        $sql_query    = "SELECT * FROM tbl_friends WHERE email_1 = '" . $account['email'] . "' AND email_2 LIKE '%$email%'";
+        $results_us   = $db->query($sql_query);
+        $count_one    = $results_us->num_rows;
+     
+        $sql_query    = "SELECT * FROM tbl_friends WHERE email_2 = '". $account['email'] . "' AND email_1 LIKE '%$email%'";
+        $results_them = $db->query($sql_query);
+        $count_two    = $results_them->num_rows;
+        
 
         switch (true) {
             case ($count_one && $count_two):
                 return FriendStatus::MUTUAL;
             case ($count_one && !$count_two):
+                if (substr($results_us->fetch_assoc()['email_2'], 0, 3) == '¿b¿') {
+                    return FriendStatus::BLOCKED;
+                }
                 return FriendStatus::REQUESTED;
             case ($count_two && !$count_one):
+                if (substr($results_them->fetch_assoc()['email_2'], 0, 3) == '¿b¿') {
+                    return FriendStatus::BLOCKED_BY;
+                }
                 return FriendStatus::REQUEST;
             default:
                 return FriendStatus::NONE;
@@ -100,8 +107,9 @@
             $prepped->bind_param("ss", $account['email'], $email);
             $prepped->execute();
             
-            $log->warning('Friend request accepted', 
-                [ 'email_1' => $account['email'], 'email_2' => $email ]);
+            $log->info('Friend request accepted', 
+                [ 'email_1' => $account['email'], 'email_2' => $email ]
+            );
         }
     }
 ?>
