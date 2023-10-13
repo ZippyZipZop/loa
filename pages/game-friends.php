@@ -168,21 +168,22 @@
                             echo   '<div class="row mb-3">
                                         <div class="card" style="max-width: 400px;">
                                             <div class="row g-0">
-                                                <div class="col-2 pt-2 pb-2">
-                                                    <form id="friend-' . $friends[$i]['id'] . '" name="friend-"' . $friends[$i]['id'] . '" action=""/game?page=friends&action=block_user" method="POST">
-                                                    <img src="/img/avatars/' . $sender_account['avatar'] . '" class="img-fluid rounded" alt="friend-' . $i . '-avatar">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">' . $online_indicator . ' - ' . $temp_account['email'] . '
-                                                    <div class="btn-group">
-                                                        <button class="btn ' . $msg_color . ' btn-block btn-sm">Message</button>
-                                                        <button class="btn btn-warning btn-block btn-sm">Remove</button>
-                                                        <button class="btn btn-danger btn-block btn-sm">Block</button>
+                                                <form id="friend-' . $friends[$i]['id'] . '" name="friend-' . $friends[$i]['id'] . '" action="/game?page=friends&action=block_user" method="POST">
+                                                    <div class="col-2 pt-2 pb-2">
+                                                        <img src="/img/avatars/' . $sender_account['avatar'] . '" class="img-fluid rounded" alt="friend-' . $i . '-avatar">
                                                     </div>
-                                                        
-                                                    <p class="card-text"><small class="text-body-secondary">Friends since ' . $friends[$i]["created"] . '</small></p>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">' . $online_indicator . ' - ' . $temp_account['email'] . '
+                                                        <div class="btn-group">
+                                                            <button class="btn ' . $msg_color . ' btn-block btn-sm">Message</button>
+                                                            <button class="btn btn-warning btn-block btn-sm">Remove</button>
+                                                            <button class="btn btn-danger btn-block btn-sm">Block</button>
+                                                        </div>
+                                                            
+                                                        <p class="card-text"><small class="text-body-secondary">Friends since ' . $friends[$i]["created"] . '</small></p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>';
