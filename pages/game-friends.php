@@ -95,7 +95,7 @@
                 return FriendStatus::NONE;
         }
 
-        return -1;
+        return FRIEND_STATUS_ERROR;
     }
 
     function accept_friend_req($email) {
@@ -114,6 +114,10 @@
                 ]
             );
         }
+    }
+    
+    function block_user($email) {
+        
     }
 ?>
 
@@ -158,13 +162,14 @@
                             
                             if ($check_user) {
                                 $online_indicator = '<p class="badge bg-success"><i class="bi bi-lightbulb-fill"></i> Online</p>';
-                                $msg_color = 'btn-success'; // -_-
+                                $msg_color = 'btn-success';
                             }
 
                             echo   '<div class="row mb-3">
                                         <div class="card" style="max-width: 400px;">
                                             <div class="row g-0">
                                                 <div class="col-2 pt-2 pb-2">
+                                                    <form id="friend-' . $friends[$i]['id'] . '" name="friend-"' . $friends[$i]['id'] . '" action=""/game?page=friends&action=block_user" method="POST">
                                                     <img src="/img/avatars/' . $sender_account['avatar'] . '" class="img-fluid rounded" alt="friend-' . $i . '-avatar">
                                                 </div>
                                                 <div class="col-md-8">
