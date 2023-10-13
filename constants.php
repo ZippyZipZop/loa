@@ -23,7 +23,7 @@
         case Default;
     }
 
-    enum UserPrivileges: int {
+    enum UserPrivileges {
         public static function name_to_value(string $name): string {
             foreach (self::cases() as $privilege) {
                 if ($name === $privilege->name){
@@ -32,6 +32,7 @@
             }
             throw new \ValueError("$name is not a valid backing value for enum " . self::class);
         }
+        
         case BANNED = 1;
         case MUTED = 2;
         case UNREGISTERED = 4;
@@ -43,7 +44,7 @@
         case GLOBAL_ADMINISTRATOR = 256;
         case OWNER = 512;
         case ROOTED = 1024;
-    };
+    }
 
 
     enum Weather {
@@ -76,19 +77,25 @@
         case HAILING;
         case CLOUDY;
         case SNOWING;
-    };
+    }
 
     enum FriendStatus {
         case MUTUAL;
         case REQUESTED;
         case REQUEST;
         case NONE;
-    };
+    }
     
     enum Error {
         case FUNCT_DOSQL_INVALIDACTION = -1000;
         
         case SQLDB_NOCONNECTION        = -2000;
         case SQLDB_PREPPED_EXECUTE     = -2001;
-    };
+    }
+    
+    enum MonsterScope {
+        case GLOBAL;
+        case ZONE;
+        case PERSONAL;
+    }
 ?>
