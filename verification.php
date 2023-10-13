@@ -1,5 +1,16 @@
 <?php
-    global $db;
+    declare(strict_types = 1);
+    session_start();
+    require __DIR__ . '/vendor/autoload.php';
+
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->safeLoad();
+
+    include 'logger.php';
+    include 'db.php';
+    include 'constants.php';
+    include 'functions.php';
+    
     if (isset($_REQUEST['code']) && isset($_REQUEST['email'])) {
         $verification_code = $_REQUEST['code'];
         $email             = $_REQUEST['email'];
@@ -30,6 +41,7 @@
                         ]
             );
         } else {
-            
+            header('Location: /?verification_failed');
+            exit();
         }
     }
