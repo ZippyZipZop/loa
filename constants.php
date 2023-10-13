@@ -84,6 +84,8 @@
         case REQUESTED;
         case REQUEST;
         case NONE;
+        case BLOCKED;
+        case BLOCKED_BY;
     }
     
     enum Error {
