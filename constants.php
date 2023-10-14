@@ -116,7 +116,7 @@
        public static function getItemRarity($roll) {
            foreach (self::cases() as $rarity) {
                $log->info("checking $rarity rarity against $roll");
-               if ($roll >= $rarity) {
+               if ($roll >= $rarity->value) {
                    return $rarity;
   
                }
