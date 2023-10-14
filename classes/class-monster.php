@@ -31,8 +31,9 @@
             $log->critical("Fatal error: Call to undefined method " . __CLASS__ . "::$function()");
         }
         
-        public function __construct($scope, $account_id = null) {
-            $this->accountID = ;
+        public function __construct(MonsterScope $scope, $account_id = null) {
+            $this->accountID = $account_id;
+            $this->scope     = $scope;
         }
     }
 }
