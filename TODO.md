@@ -5,6 +5,7 @@
 
   - > fr tho
     >
+    [X] done.
 
 * [X] RELEASE ME FROM THIS INDENTATION-HELL
 
